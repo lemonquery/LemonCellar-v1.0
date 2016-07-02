@@ -1,0 +1,8 @@
+﻿.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=90);
+    opacity: 0.6;
+}
+body {
+background-color:#2f8ead
+}

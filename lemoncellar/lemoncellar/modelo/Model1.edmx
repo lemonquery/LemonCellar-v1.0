@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="lemoncellarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CONSUMIBLE">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="CANTIDAD" Type="int" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONSUMIBLE_G">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE_G" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE_G" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CONSUMIBLE" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="100" />
+          <Property Name="CANTIDAD_SC" Type="int" />
+        </EntityType>
+        <EntityType Name="CONSUMIBLE_I">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE_I" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE_I" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CONSUMIBLE" Type="int" />
+          <Property Name="VALOR" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="CANTIDAD_IC" Type="int" />
+        </EntityType>
+        <EntityType Name="HERRAMIENTA">
+          <Key>
+            <PropertyRef Name="ID_HERRAMIENTA" />
+          </Key>
+          <Property Name="ID_HERRAMIENTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="50" />
+          <Property Name="VALOR" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MATERIAL">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL" />
+          </Key>
+          <Property Name="ID_MATERIAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" />
+          <Property Name="MEDIDA" Type="varchar" MaxLength="50" />
+          <Property Name="CANTIDAD" Type="int" />
+        </EntityType>
+        <EntityType Name="MATERIAL_I">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL_I" />
+          </Key>
+          <Property Name="ID_MATERIAL_I" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MATERIAL" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="VALOR" Type="int" />
+          <Property Name="CANTIDAD_IM" Type="int" />
+        </EntityType>
+        <EntityType Name="MATERIAL_S">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL_S" />
+          </Key>
+          <Property Name="ID_MATERIAL_S" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MATERIAL" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="OPERADOR" Type="varchar" MaxLength="50" />
+          <Property Name="CANTIDAD_SM" Type="int" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CONSUMIBLE_G_CONSUMIBLE">
+          <End Role="CONSUMIBLE" Type="Self.CONSUMIBLE" Multiplicity="0..1" />
+          <End Role="CONSUMIBLE_G" Type="Self.CONSUMIBLE_G" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONSUMIBLE">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Principal>
+            <Dependent Role="CONSUMIBLE_G">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSUMIBLE_I_CONSUMIBLE">
+          <End Role="CONSUMIBLE" Type="Self.CONSUMIBLE" Multiplicity="0..1" />
+          <End Role="CONSUMIBLE_I" Type="Self.CONSUMIBLE_I" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONSUMIBLE">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Principal>
+            <Dependent Role="CONSUMIBLE_I">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIAL_I_MATERIAL">
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
+          <End Role="MATERIAL_I" Type="Self.MATERIAL_I" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIAL">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Principal>
+            <Dependent Role="MATERIAL_I">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIAL_S_MATERIAL">
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
+          <End Role="MATERIAL_S" Type="Self.MATERIAL_S" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIAL">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Principal>
+            <Dependent Role="MATERIAL_S">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lemoncellarModelStoreContainer">
+          <EntitySet Name="CONSUMIBLE" EntityType="Self.CONSUMIBLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONSUMIBLE_G" EntityType="Self.CONSUMIBLE_G" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONSUMIBLE_I" EntityType="Self.CONSUMIBLE_I" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HERRAMIENTA" EntityType="Self.HERRAMIENTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIAL_I" EntityType="Self.MATERIAL_I" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIAL_S" EntityType="Self.MATERIAL_S" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CONSUMIBLE_G_CONSUMIBLE" Association="Self.FK_CONSUMIBLE_G_CONSUMIBLE">
+            <End Role="CONSUMIBLE" EntitySet="CONSUMIBLE" />
+            <End Role="CONSUMIBLE_G" EntitySet="CONSUMIBLE_G" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSUMIBLE_I_CONSUMIBLE" Association="Self.FK_CONSUMIBLE_I_CONSUMIBLE">
+            <End Role="CONSUMIBLE" EntitySet="CONSUMIBLE" />
+            <End Role="CONSUMIBLE_I" EntitySet="CONSUMIBLE_I" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIAL_I_MATERIAL" Association="Self.FK_MATERIAL_I_MATERIAL">
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+            <End Role="MATERIAL_I" EntitySet="MATERIAL_I" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIAL_S_MATERIAL" Association="Self.FK_MATERIAL_S_MATERIAL">
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+            <End Role="MATERIAL_S" EntitySet="MATERIAL_S" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lemoncellarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CONSUMIBLE">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Int32" />
+          <Property Name="DETALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONSUMIBLE_G" Relationship="Self.FK_CONSUMIBLE_G_CONSUMIBLE" FromRole="CONSUMIBLE" ToRole="CONSUMIBLE_G" />
+          <NavigationProperty Name="CONSUMIBLE_I" Relationship="Self.FK_CONSUMIBLE_I_CONSUMIBLE" FromRole="CONSUMIBLE" ToRole="CONSUMIBLE_I" />
+        </EntityType>
+        <EntityType Name="CONSUMIBLE_G">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE_G" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE_G" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CONSUMIBLE" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="DETALLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_SC" Type="Int32" />
+          <NavigationProperty Name="CONSUMIBLE" Relationship="Self.FK_CONSUMIBLE_G_CONSUMIBLE" FromRole="CONSUMIBLE_G" ToRole="CONSUMIBLE" />
+        </EntityType>
+        <EntityType Name="CONSUMIBLE_I">
+          <Key>
+            <PropertyRef Name="ID_CONSUMIBLE_I" />
+          </Key>
+          <Property Name="ID_CONSUMIBLE_I" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CONSUMIBLE" Type="Int32" />
+          <Property Name="VALOR" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="CANTIDAD_IC" Type="Int32" />
+          <NavigationProperty Name="CONSUMIBLE" Relationship="Self.FK_CONSUMIBLE_I_CONSUMIBLE" FromRole="CONSUMIBLE_I" ToRole="CONSUMIBLE" />
+        </EntityType>
+        <EntityType Name="HERRAMIENTA">
+          <Key>
+            <PropertyRef Name="ID_HERRAMIENTA" />
+          </Key>
+          <Property Name="ID_HERRAMIENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DETALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALOR" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MATERIAL">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL" />
+          </Key>
+          <Property Name="ID_MATERIAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEDIDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Int32" />
+          <NavigationProperty Name="MATERIAL_I" Relationship="Self.FK_MATERIAL_I_MATERIAL" FromRole="MATERIAL" ToRole="MATERIAL_I" />
+          <NavigationProperty Name="MATERIAL_S" Relationship="Self.FK_MATERIAL_S_MATERIAL" FromRole="MATERIAL" ToRole="MATERIAL_S" />
+        </EntityType>
+        <EntityType Name="MATERIAL_I">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL_I" />
+          </Key>
+          <Property Name="ID_MATERIAL_I" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MATERIAL" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="VALOR" Type="Int32" />
+          <Property Name="CANTIDAD_IM" Type="Int32" />
+          <NavigationProperty Name="MATERIAL" Relationship="Self.FK_MATERIAL_I_MATERIAL" FromRole="MATERIAL_I" ToRole="MATERIAL" />
+        </EntityType>
+        <EntityType Name="MATERIAL_S">
+          <Key>
+            <PropertyRef Name="ID_MATERIAL_S" />
+          </Key>
+          <Property Name="ID_MATERIAL_S" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MATERIAL" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="OPERADOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_SM" Type="Int32" />
+          <Property Name="DETALLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MATERIAL" Relationship="Self.FK_MATERIAL_S_MATERIAL" FromRole="MATERIAL_S" ToRole="MATERIAL" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_CONSUMIBLE_G_CONSUMIBLE">
+          <End Role="CONSUMIBLE" Type="Self.CONSUMIBLE" Multiplicity="0..1" />
+          <End Role="CONSUMIBLE_G" Type="Self.CONSUMIBLE_G" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONSUMIBLE">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Principal>
+            <Dependent Role="CONSUMIBLE_G">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSUMIBLE_I_CONSUMIBLE">
+          <End Role="CONSUMIBLE" Type="Self.CONSUMIBLE" Multiplicity="0..1" />
+          <End Role="CONSUMIBLE_I" Type="Self.CONSUMIBLE_I" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONSUMIBLE">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Principal>
+            <Dependent Role="CONSUMIBLE_I">
+              <PropertyRef Name="ID_CONSUMIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIAL_I_MATERIAL">
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
+          <End Role="MATERIAL_I" Type="Self.MATERIAL_I" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIAL">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Principal>
+            <Dependent Role="MATERIAL_I">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIAL_S_MATERIAL">
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
+          <End Role="MATERIAL_S" Type="Self.MATERIAL_S" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIAL">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Principal>
+            <Dependent Role="MATERIAL_S">
+              <PropertyRef Name="ID_MATERIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lemoncellarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CONSUMIBLE" EntityType="Self.CONSUMIBLE" />
+          <EntitySet Name="CONSUMIBLE_G" EntityType="Self.CONSUMIBLE_G" />
+          <EntitySet Name="CONSUMIBLE_I" EntityType="Self.CONSUMIBLE_I" />
+          <EntitySet Name="HERRAMIENTA" EntityType="Self.HERRAMIENTA" />
+          <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" />
+          <EntitySet Name="MATERIAL_I" EntityType="Self.MATERIAL_I" />
+          <EntitySet Name="MATERIAL_S" EntityType="Self.MATERIAL_S" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_CONSUMIBLE_G_CONSUMIBLE" Association="Self.FK_CONSUMIBLE_G_CONSUMIBLE">
+            <End Role="CONSUMIBLE" EntitySet="CONSUMIBLE" />
+            <End Role="CONSUMIBLE_G" EntitySet="CONSUMIBLE_G" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSUMIBLE_I_CONSUMIBLE" Association="Self.FK_CONSUMIBLE_I_CONSUMIBLE">
+            <End Role="CONSUMIBLE" EntitySet="CONSUMIBLE" />
+            <End Role="CONSUMIBLE_I" EntitySet="CONSUMIBLE_I" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIAL_I_MATERIAL" Association="Self.FK_MATERIAL_I_MATERIAL">
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+            <End Role="MATERIAL_I" EntitySet="MATERIAL_I" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIAL_S_MATERIAL" Association="Self.FK_MATERIAL_S_MATERIAL">
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+            <End Role="MATERIAL_S" EntitySet="MATERIAL_S" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lemoncellarModelStoreContainer" CdmEntityContainer="lemoncellarEntities">
+          <EntitySetMapping Name="CONSUMIBLE">
+            <EntityTypeMapping TypeName="lemoncellarModel.CONSUMIBLE">
+              <MappingFragment StoreEntitySet="CONSUMIBLE">
+                <ScalarProperty Name="ID_CONSUMIBLE" ColumnName="ID_CONSUMIBLE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSUMIBLE_G">
+            <EntityTypeMapping TypeName="lemoncellarModel.CONSUMIBLE_G">
+              <MappingFragment StoreEntitySet="CONSUMIBLE_G">
+                <ScalarProperty Name="ID_CONSUMIBLE_G" ColumnName="ID_CONSUMIBLE_G" />
+                <ScalarProperty Name="ID_CONSUMIBLE" ColumnName="ID_CONSUMIBLE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+                <ScalarProperty Name="CANTIDAD_SC" ColumnName="CANTIDAD_SC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSUMIBLE_I">
+            <EntityTypeMapping TypeName="lemoncellarModel.CONSUMIBLE_I">
+              <MappingFragment StoreEntitySet="CONSUMIBLE_I">
+                <ScalarProperty Name="ID_CONSUMIBLE_I" ColumnName="ID_CONSUMIBLE_I" />
+                <ScalarProperty Name="ID_CONSUMIBLE" ColumnName="ID_CONSUMIBLE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CANTIDAD_IC" ColumnName="CANTIDAD_IC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HERRAMIENTA">
+            <EntityTypeMapping TypeName="lemoncellarModel.HERRAMIENTA">
+              <MappingFragment StoreEntitySet="HERRAMIENTA">
+                <ScalarProperty Name="ID_HERRAMIENTA" ColumnName="ID_HERRAMIENTA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAL">
+            <EntityTypeMapping TypeName="lemoncellarModel.MATERIAL">
+              <MappingFragment StoreEntitySet="MATERIAL">
+                <ScalarProperty Name="ID_MATERIAL" ColumnName="ID_MATERIAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="MEDIDA" ColumnName="MEDIDA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAL_I">
+            <EntityTypeMapping TypeName="lemoncellarModel.MATERIAL_I">
+              <MappingFragment StoreEntitySet="MATERIAL_I">
+                <ScalarProperty Name="ID_MATERIAL_I" ColumnName="ID_MATERIAL_I" />
+                <ScalarProperty Name="ID_MATERIAL" ColumnName="ID_MATERIAL" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="CANTIDAD_IM" ColumnName="CANTIDAD_IM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAL_S">
+            <EntityTypeMapping TypeName="lemoncellarModel.MATERIAL_S">
+              <MappingFragment StoreEntitySet="MATERIAL_S">
+                <ScalarProperty Name="ID_MATERIAL_S" ColumnName="ID_MATERIAL_S" />
+                <ScalarProperty Name="ID_MATERIAL" ColumnName="ID_MATERIAL" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="OPERADOR" ColumnName="OPERADOR" />
+                <ScalarProperty Name="CANTIDAD_SM" ColumnName="CANTIDAD_SM" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="lemoncellarModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
