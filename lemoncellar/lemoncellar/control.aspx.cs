@@ -38,7 +38,7 @@ namespace lemoncellar
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
                         txtusuario.Text,
                         DateTime.Now,
-                        DateTime.Now.AddSeconds(60),
+                        DateTime.Now.AddSeconds(6000),
                         false,
                         datoUsuario,
                         FormsAuthentication.FormsCookiePath

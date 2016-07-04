@@ -5,9 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-
         <ContentTemplate>
-
             <br />
             <div class="modal-content" style="text-align: right; margin-right: 20px; margin-left: 20px">
                 <br />
@@ -46,10 +44,10 @@
                 </div>                
             </div>
             <!-- popuplogin -->
-                    <asp:modalpopupextender id="mp1" runat="server" popupcontrolid="Panel1" targetcontrolid="btnShow"
+            <asp:modalpopupextender id="mp1" runat="server" popupcontrolid="Panel1" targetcontrolid="btnShow"
                         cancelcontrolid="btnClose" backgroundcssclass="modalBackground">
                     </asp:modalpopupextender>
-                    <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup"  Style="display: none">
+            <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup"  Style="display: none">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div style="background-color:#2f8ead; color:white" class="modal-header text-center">
@@ -75,9 +73,7 @@
                             </div>
                         </div>
                     </div>
-
-                        
-                    </asp:Panel>
+            </asp:Panel>
             <!-- popupoffine -->
             <asp:ModalPopupExtender ID="mpmaterial" runat="server" PopupControlID="Panel2" TargetControlID="ImageButton1"
                 CancelControlID="btnclose1" BackgroundCssClass="modalBackground">
@@ -89,7 +85,18 @@
                             <h5>Lista de materiales</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvmaterial" CssClass=" table table-condensed btn-primary" runat="server">
+                            <asp:GridView ID="gvmaterial" CssClass=" table" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#EFF3FB" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
                             </asp:GridView>
                         </div>
                         <div class="modal-footer">
@@ -108,7 +115,19 @@
                             <h5>Lista de Herramientas</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server"></asp:GridView>
+                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#EFF3FB" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                            </asp:GridView>
                         </div>
                         <div class="modal-footer">
                             <asp:Button ID="btnclose2" CssClass="btn btn-default" runat="server" Text="Volver" />
@@ -126,7 +145,19 @@
                             <h5>Lista de Consumibles</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvconsumible" CssClass="table btn-primary" runat="server"></asp:GridView>
+                            <asp:GridView ID="gvconsumible" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#EFF3FB" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                            </asp:GridView>
                         </div>
                         <div class="modal-footer">
                             <asp:Button ID="btnclose3" CssClass="btn btn-default" runat="server" Text="Volver" />
