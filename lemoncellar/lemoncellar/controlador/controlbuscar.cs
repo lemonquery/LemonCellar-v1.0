@@ -17,7 +17,7 @@ namespace lemoncellar.controlador
                 var consulta = from ma in modelo.MATERIAL
 
                                where ma.NOMBRE == buscar
-                               select new { ma.NOMBRE, ma.TIPO, ma.MEDIDA, ma.CANTIDAD};
+                               select new { ma.ID_MATERIAL, ma.NOMBRE, ma.TIPO, ma.MEDIDA, ma.CANTIDAD };
 
                 return consulta.ToList<object>();
             }
@@ -26,6 +26,45 @@ namespace lemoncellar.controlador
                 return null;
             }
 
+        }
+        public bool agregarherramienta(HERRAMIENTA nuevo)
+        {
+            try
+            {
+                modelo.HERRAMIENTA.Add(nuevo);
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool agregarmaterialI(MATERIAL_I nuevo)
+        {
+            try
+            {
+                modelo.MATERIAL_I.Add(nuevo);
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool Actualizarmaterial(MATERIAL nueva)
+        {
+            try
+            {
+                MATERIAL original = new MATERIAL();
+                original = modelo.MATERIAL.Find(nueva.ID_MATERIAL);
+                original.CANTIDAD = nueva.CANTIDAD;
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }

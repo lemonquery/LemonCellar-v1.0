@@ -14,7 +14,7 @@ namespace lemoncellar.controlador
             {
                 var consulta = from material in contexto.MATERIAL
                                where material.CANTIDAD > 0
-                               select new { material.NOMBRE, material.TIPO, material.MEDIDA, material.CANTIDAD };
+                               select new { material.NOMBRE, material.TIPO, material.MEDIDA, material.CANTIDAD, material.ID_MATERIAL};
                                
                 return consulta.ToList<object>();
             }

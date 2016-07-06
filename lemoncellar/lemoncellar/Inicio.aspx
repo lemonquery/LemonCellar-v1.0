@@ -33,7 +33,9 @@
                     </div>
                     <div class="col-md-4">
                         <br/>
-                        <asp:ImageButton ID="imhu" ImageUrl="ima/herramienta.jpg" runat="server" />
+                        <asp:Button ID="btnverh" CssClass="btn btn-primary" runat="server" Text="Herramientas" />
+                        <asp:Button ID="btnherra" CssClass="btn btn-primary" runat="server" Text="agregar" />
+                        <asp:Label ID="lbagregado" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-md-4">
                         <br/>
@@ -51,15 +53,32 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header"  style="background-color:#2f8ead">
-                            <h4>material</h4>
+                            <h4>Material</h4>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="bbuscarmaterial" CssClass="btn btn-primary" OnClick="bbuscarmaterial_Click" runat="server" Text="buscar" />
                             <asp:TextBox ID="txtbuscarm" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
                             <asp:Label ID="lbmaterial" runat="server" Text=""></asp:Label>
                             <br /><br/>
-                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False">
+                            <asp:TextBox ID="txtvalorma" placeholder="precio" Visible="false"  CssClass="form-control" runat="server"></asp:TextBox> 
+                            <asp:TextBox ID="txtcantidadma" placeholder="cantidad" Visible="false" CssClass="form-control" runat="server"></asp:TextBox><br/>
+                            <asp:TextBox ID="txtcmn" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmt" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmm" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox><br/>
+                            <asp:Button ID="btnconfirmarmaterial" CssClass="btn btn-primary" Visible="false" runat="server" Text="Confirmar"  OnClick="btnconfirmarmaterial_Click"/>
+                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False" OnSelectedIndexChanging="gvmaterial_SelectedIndexChanging">
                                 <Columns>
+                                    
+                                    <asp:TemplateField HeaderText="" SortExpression="ID_MATERIAL">
+                                        <EditItemTemplate>
+                                            <asp:Label ID="Label5" Visible="false" runat="server" Text='<%# Eval("ID_MATERIAL") %>'></asp:Label>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label5" Visible="false"  runat="server" Text='<%# Bind("ID_MATERIAL") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
                                     <asp:TemplateField HeaderText="Nombre" SortExpression="NOMBRE">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("NOMBRE") %>'></asp:Label>
@@ -94,7 +113,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Asignar">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Select" Text=""><i class="fa fa-cubes" aria-hidden="true"></i></asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton1" CssClass=" btn btn-primary" runat="server" CausesValidation="false" CommandName="Select" Text=""><i class="fa fa-cubes" ></i></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     
@@ -111,21 +130,94 @@
                 
             </asp:Panel>
             <!-- ModalPopupExtender -->
-            <asp:Button ID="btnfalso1" runat="server" Visible="false" Text="Button" />
-             <asp:ModalPopupExtender ID="mpam" runat="server" popupcontrolid="panelm2" targetcontrolid="btnfalso1"
-                cancelcontrolid="btnClose1" backgroundcssclass="modalBackground">
+            <asp:ModalPopupExtender ID="mpherramienta" runat="server" PopupControlID="panelherra" TargetControlID="btnherra"
+                CancelControlID="btnclose2" BackgroundCssClass="modalBackground">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="panelm2" runat="server">
+            <asp:Panel ID="panelherra" runat="server">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header"></div>
-                        <div class="modal-body">
-                            <asp:Label ID="lbmanombre" runat="server"  Text="asd"></asp:Label>
-                            <asp:Label ID="lbmatipo" runat="server"  Text="asd"></asp:Label>
-                            <asp:Label ID="lbmamedida" runat="server"  Text="asd"></asp:Label>
-                            <asp:Label ID="lbmacantidad" runat="server"  Text=""></asp:Label>
+                        <div class="modal-header">
+                            <h5>Lista de Herramientas</h5>
                         </div>
-                        <div class="modal-footer"></div>
+                        <div class="modal-body" style="text-align:center">
+                            <div class="input-group">
+                                <span class="input-group-addon">Nombre</span>
+                                <asp:TextBox ID="txthnombre" CssClass="form-control"  runat="server"></asp:TextBox>
+                            </div><br/><br/>
+                            <div class="input-group">
+                                <span class="input-group-addon">Detalle</span>
+                                <asp:TextBox ID="txthdetalle" CssClass="form-control"  runat="server"></asp:TextBox>
+                            </div><br/><br/>
+                            <div class="input-group">
+                                <span class="input-group-addon">Valor</span>
+                                <asp:TextBox ID="txthvalor" CssClass="form-control"  runat="server"></asp:TextBox>
+                            </div><br/><br/>
+                            <div class="input-group" style="text-align:center">
+                                <div class="input-group-addon">Estado</div>                                
+                                <asp:DropDownList ID="ddhestado" CssClass="form-control" runat="server">
+                                    <asp:ListItem Value="activo">activo</asp:ListItem>
+                                    <asp:ListItem Value="inactivo">inactivo</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <br/><br/>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnagregarh" CssClass="btn btn-primary" OnClick="btnagregarh_Click" runat="server" Text="agregar" />
+                            <asp:Button ID="btnclose2" CssClass="btn btn-default" runat="server" Text="Volver" />
+
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+            <asp:ModalPopupExtender ID="mpconsumible" runat="server" PopupControlID="panelconsum" TargetControlID="imcu"
+                CancelControlID="btnclose3" BackgroundCssClass="modalBackground">
+            </asp:ModalPopupExtender>
+            <asp:Panel ID="panelconsum" runat="server">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>Lista de Consumibles</h5>
+                        </div>
+                        <div class="modal-body">
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnclose3" CssClass="btn btn-default" runat="server" Text="Volver" />
+                        </div>
+                        
+                    </div>
+                </div>
+            </asp:Panel>
+           
+            <%--vistas--%>
+            <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="Panel3" TargetControlID="btnverh"
+                CancelControlID="btnclose2" BackgroundCssClass="modalBackground">
+            </asp:ModalPopupExtender>
+            <asp:Panel ID="Panel3" runat="server">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>Lista de Herramientas</h5>
+                        </div>
+                        <div class="modal-body">
+                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#EFF3FB" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                            </asp:GridView>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Volver" />
+                        </div>
                     </div>
                 </div>
             </asp:Panel>
