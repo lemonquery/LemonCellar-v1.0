@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using System.Data;
+using System.Configuration;
 using lemoncellar.controlador;
 using lemoncellar.modelo;
 
@@ -38,15 +40,34 @@ namespace lemoncellar
             {
                 txtvalorma.Visible = false;
                 txtcantidadma.Visible = false;
-                lbmaterial.Text = "no se encontro nada";
+                lbmaterial.Text = "no se encontro registro, registre un nuevo material";
                 txtbuscarm.Text = "";
+
+                
+                txtcmn.Visible = true;
+                txtcmn.Enabled = true;
+                txtcmt.Visible = true;
+                txtcmt.Enabled = true;
+                txtcmm.Visible = true;
+                txtcmm.Enabled = true;
+                
+                btnmaterialn.Visible = true;
+
                 gvmaterial.DataSource = null;
                 gvmaterial.DataBind();
                 mm1.Show();
                 
             }
             else {
-                
+                txtcmn.Visible = false;
+                txtcmn.Enabled = false;
+                txtcmt.Visible = false;
+                txtcmt.Enabled = false;
+                txtcmm.Visible = false;
+                txtcmm.Enabled = false;
+                txtcmc.Visible = false;
+                txtcmc.Enabled = false;
+                btnmaterialn.Visible = false;
                 lbmaterial.Text = "";
                 txtbuscarm.Text = "";
                 gvmaterial.DataSource = con.buscarmaterial(buscar);
@@ -55,6 +76,7 @@ namespace lemoncellar
                 mm1.Show();
                 txtvalorma.Visible = true;
                 txtcantidadma.Visible = true;
+                
             }
         }
 
@@ -112,12 +134,14 @@ namespace lemoncellar
                 Label mtipo = (Label)gvmaterial.Rows[e.NewSelectedIndex].FindControl("Label2");
                 Label mmedida = (Label)gvmaterial.Rows[e.NewSelectedIndex].FindControl("Label3");
                 Label mcantidad = (Label)gvmaterial.Rows[e.NewSelectedIndex].FindControl("Label4");
+                Label mid = (Label)gvmaterial.Rows[e.NewSelectedIndex].FindControl("Label5");
                 int cantidadantigua = 0;
                 cantidadantigua = Convert.ToInt32(txtcantidadma.Text);
                 int cantidadnueva = 0;
                 cantidadnueva = Convert.ToInt32(mcantidad.Text);
                 int s = 0;
                 s = cantidadantigua + cantidadnueva;
+                lbid.Text = mid.Text;
 
                 txtcantidadma.Visible = false;
                 txtvalorma.Visible = false;
@@ -134,6 +158,7 @@ namespace lemoncellar
                 txtcmm.Text = mmedida.Text;
                 txtcmc.Text = s.ToString();
                 mm1.Show();
+                lbmaterial.Text = "los datos seran registrados de la siquiente manera";
             }
             
             
@@ -142,9 +167,10 @@ namespace lemoncellar
         protected void btnconfirmarmaterial_Click(object sender, EventArgs e)
         {
 
-            
+            DateTime fecha = DateTime.Now;
                 MATERIAL nuevo = new MATERIAL
                 {
+                    ID_MATERIAL = Convert.ToInt32(lbid.Text),
                     NOMBRE= txtcmn.Text,
                     TIPO= txtcmt.Text,
                     MEDIDA= txtcmm.Text,
@@ -153,23 +179,81 @@ namespace lemoncellar
                 };
                 if (con.Actualizarmaterial(nuevo))
                 {
-                    txtvalorma.Text = "";
-                    txtcantidadma.Text = "";
-                    gvmaterial.DataSource = null;
-                    gvmaterial.DataBind();
-                    mm1.Show();
+                    
+                    MATERIAL_I nuevoi = new MATERIAL_I
+                   {
+                       ID_MATERIAL = Convert.ToInt32(lbid.Text),
+                       FECHA = fecha,
+                       VALOR = Convert.ToInt32(txtvalorma.Text),
+                       CANTIDAD_IM = Convert.ToInt32(txtcantidadma.Text)
+
+                   };
+
+                    if (con.agregarmaterialI(nuevoi))
+                    {
+                        txtvalorma.Text = "";
+                        txtcantidadma.Text = "";
+                        lbmaterial.Text = "compra agregada";
+                        gvmaterial.DataBind();
+                        mm1.Show();
+                    }
                 }
 
 
                 txtcmn.Visible = false;
+                txtcmn.Text = "";
                 txtcmt.Visible = false;
+                txtcmt.Text = "";
                 txtcmm.Visible = false;
+                txtcmm.Text = "";
                 txtcmc.Visible = false;
+                txtcmc.Text = "";
                 btnconfirmarmaterial.Visible = false;
                 gvmaterial.Visible = true;
                 
         }
 
+        protected void btnmaterialn_Click(object sender, EventArgs e)
+        {
+            if (txtcmn.Equals("") || txtcmt.Equals("") || txtcmm.Equals("") )
+            {
+                lbmaterial.Text = "rellene campos";
+            }
+            else {
+                string nombre = txtcmn.Text;
+                string tipo = txtcmt.Text;
+                string medida = txtcmm.Text;
+                int cantidad = 0;
+
+                MATERIAL nuevo = new MATERIAL
+                {
+                    NOMBRE = nombre,
+                    TIPO = tipo,
+                    MEDIDA = medida,
+                    CANTIDAD = cantidad,
+
+                };
+                if (con.agregarmaterial(nuevo))
+                {
+                    lbmaterial.Text = "agregado";
+                    txtcmn.Visible = false;
+                    txtcmn.Text = "";
+                    txtcmt.Visible = false;
+                    txtcmt.Text = "";
+                    txtcmm.Visible = false;
+                    txtcmm.Text = "";
+                    btnconfirmarmaterial.Visible = false;
+                    mm1.Show();
+                }
+
+            }
+        }
+
+       
+        
+
+        
+      
         
 
       

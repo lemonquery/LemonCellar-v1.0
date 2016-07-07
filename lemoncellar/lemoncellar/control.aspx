@@ -85,7 +85,7 @@
                             <h5>Lista de materiales</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvmaterial" CssClass=" table" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="gvmaterial" CssClass=" table" PageSize="5" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -115,7 +115,7 @@
                             <h5>Lista de Herramientas</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="gvherramientas" AllowPaging="true" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" >
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

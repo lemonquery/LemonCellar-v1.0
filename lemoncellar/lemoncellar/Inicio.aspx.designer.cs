@@ -37,7 +37,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton immu;
+        protected global::System.Web.UI.WebControls.Button immu;
         
         /// <summary>
         /// Control btnverh.
@@ -121,24 +121,6 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.Label lbmaterial;
         
         /// <summary>
-        /// Control txtvalorma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtvalorma;
-        
-        /// <summary>
-        /// Control txtcantidadma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcantidadma;
-        
-        /// <summary>
         /// Control txtcmn.
         /// </summary>
         /// <remarks>
@@ -173,6 +155,42 @@ namespace lemoncellar {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcmc;
+        
+        /// <summary>
+        /// Control txtvalorma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtvalorma;
+        
+        /// <summary>
+        /// Control txtcantidadma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcantidadma;
+        
+        /// <summary>
+        /// Control btnmaterialn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnmaterialn;
+        
+        /// <summary>
+        /// Control lbid.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbid;
         
         /// <summary>
         /// Control btnconfirmarmaterial.

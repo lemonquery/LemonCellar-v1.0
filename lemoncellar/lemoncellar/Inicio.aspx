@@ -28,8 +28,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <br/>
-                        <asp:ImageButton ID="immu" ImageUrl="ima/material.png" runat="server" />
-                        
+                        <asp:Button ID="immu" CssClass="btn btn-primary" runat="server" Text="compra" />
                     </div>
                     <div class="col-md-4">
                         <br/>
@@ -59,15 +58,18 @@
                             <asp:Button ID="bbuscarmaterial" CssClass="btn btn-primary" OnClick="bbuscarmaterial_Click" runat="server" Text="buscar" />
                             <asp:TextBox ID="txtbuscarm" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
                             <asp:Label ID="lbmaterial" runat="server" Text=""></asp:Label>
-                            <br /><br/>
+                            <br /><br/>              
+                                       
+                            <asp:TextBox ID="txtcmn" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Nombre"></asp:TextBox>
+                            <asp:TextBox ID="txtcmt" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Tipo"></asp:TextBox>
+                            <asp:TextBox ID="txtcmm" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Medida"></asp:TextBox>
+                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Cantidad"></asp:TextBox>
                             <asp:TextBox ID="txtvalorma" placeholder="precio" Visible="false"  CssClass="form-control" runat="server"></asp:TextBox> 
                             <asp:TextBox ID="txtcantidadma" placeholder="cantidad" Visible="false" CssClass="form-control" runat="server"></asp:TextBox><br/>
-                            <asp:TextBox ID="txtcmn" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtcmt" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtcmm" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox><br/>
+                            <asp:Button ID="btnmaterialn" CssClass="btn btn-primary" Visible="false" runat="server" Text="agregar"  OnClick="btnmaterialn_Click"/><br/>
+                            <asp:Label ID="lbid" runat="server" Visible="false" Text=""></asp:Label>
                             <asp:Button ID="btnconfirmarmaterial" CssClass="btn btn-primary" Visible="false" runat="server" Text="Confirmar"  OnClick="btnconfirmarmaterial_Click"/>
-                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False" OnSelectedIndexChanging="gvmaterial_SelectedIndexChanging">
+                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False" PageSize="5" OnSelectedIndexChanging="gvmaterial_SelectedIndexChanging" >
                                 <Columns>
                                     
                                     <asp:TemplateField HeaderText="" SortExpression="ID_MATERIAL">

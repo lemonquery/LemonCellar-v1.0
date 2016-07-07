@@ -39,6 +39,19 @@ namespace lemoncellar.controlador
                 return false;
             }
         }
+        public bool agregarmaterial(MATERIAL nuevo)
+        {
+            try
+            {
+                modelo.MATERIAL.Add(nuevo);
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+          
         public bool agregarmaterialI(MATERIAL_I nuevo)
         {
             try
