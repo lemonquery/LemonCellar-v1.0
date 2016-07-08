@@ -85,12 +85,13 @@
                             <h5>Lista de materiales</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvmaterial" CssClass=" table" PageSize="5" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="gvmaterial" CssClass=" table" PageSize="5" runat="server" AllowPaging="True"  OnPageIndexChanging="gvmaterial_PageIndexChanging" CellPadding="4" ForeColor="#333333">
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerSettings NextPageText="&gt;&gt;&gt;" PreviousPageText="&lt;&lt;&lt;" Mode="NextPrevious" />
+                                <PagerStyle BackColor="#2461BF" Font-Size="X-Large" Font-Underline="False" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#EFF3FB" />
                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
@@ -115,12 +116,13 @@
                             <h5>Lista de Herramientas</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvherramientas" AllowPaging="true" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" >
+                            <asp:GridView ID="gvherramientas" AllowPaging="true" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="gvherramientas_PageIndexChanging" PageSize="5" >
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerSettings Mode="NextPrevious" NextPageText="&gt;&gt;&gt;" PreviousPageText="&lt;&lt;&lt;" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Font-Size="X-Large" />
                                 <RowStyle BackColor="#EFF3FB" />
                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
@@ -145,12 +147,13 @@
                             <h5>Lista de Consumibles</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvconsumible" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="gvconsumible" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" OnPageIndexChanging="gvconsumible_PageIndexChanging"  PageSize="5">
                                 <AlternatingRowStyle BackColor="White" />
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerSettings Mode="NextPrevious" NextPageText="&gt;&gt;&gt;" PageButtonCount="5" PreviousPageText="&lt;&lt;&lt;" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Font-Size="X-Large" />
                                 <RowStyle BackColor="#EFF3FB" />
                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                 <SortedAscendingCellStyle BackColor="#F5F7FB" />

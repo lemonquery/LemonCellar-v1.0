@@ -69,6 +69,32 @@ namespace lemoncellar
             
         }
 
+        protected void gvmaterial_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvmaterial.PageIndex = e.NewPageIndex;
+            gvmaterial.DataSource = CV.listamaterial();
+            gvmaterial.DataBind();
+            mpmaterial.Show();
+        }
+
+        protected void gvherramientas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvherramientas.PageIndex = e.NewPageIndex;
+            gvherramientas.DataSource = CV.listaherramienta();
+            gvherramientas.DataBind();
+            mpherramienta.Show();
+        }
+
+        
+
+        protected void gvconsumible_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvconsumible.PageIndex = e.NewPageIndex;
+            gvconsumible.DataSource = CV.listaconsumible();
+            gvconsumible.DataBind();
+            mpconsumible.Show();
+        }
+
        
 
         

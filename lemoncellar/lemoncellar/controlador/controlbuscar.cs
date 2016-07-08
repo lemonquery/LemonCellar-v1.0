@@ -27,6 +27,20 @@ namespace lemoncellar.controlador
             }
 
         }
+        public List<object> buscarconsumible(String buscar) {
+            try
+            {
+                var consulta = from co in modelo.CONSUMIBLE
+                               where co.NOMBRE == buscar
+                               select co;
+                return consulta.ToList<object>();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
         public bool agregarherramienta(HERRAMIENTA nuevo)
         {
             try
@@ -50,13 +64,24 @@ namespace lemoncellar.controlador
             {
                 return false;
             }
-        }
-          
+        }          
         public bool agregarmaterialI(MATERIAL_I nuevo)
         {
             try
             {
                 modelo.MATERIAL_I.Add(nuevo);
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool agregarmaterialS(MATERIAL_S nuevo)
+        {
+            try
+            {
+                modelo.MATERIAL_S.Add(nuevo);
                 return modelo.SaveChanges() > 0;
             }
             catch (Exception)

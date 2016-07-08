@@ -63,13 +63,18 @@
                             <asp:TextBox ID="txtcmn" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Nombre"></asp:TextBox>
                             <asp:TextBox ID="txtcmt" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Tipo"></asp:TextBox>
                             <asp:TextBox ID="txtcmm" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Medida"></asp:TextBox>
-                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Cantidad"></asp:TextBox>
-                            <asp:TextBox ID="txtvalorma" placeholder="precio" Visible="false"  CssClass="form-control" runat="server"></asp:TextBox> 
-                            <asp:TextBox ID="txtcantidadma" placeholder="cantidad" Visible="false" CssClass="form-control" runat="server"></asp:TextBox><br/>
+                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control"  runat="server" placeholder=" ingrese la Cantidad"></asp:TextBox>
+                            <asp:TextBox ID="txtcmv" Visible="false"  CssClass="form-control" placeholder="precio" runat="server"></asp:TextBox>                             
+                            <asp:TextBox ID="txtcmr" placeholder="Responsable" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmd" placeholder="comentario" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
                             <asp:Button ID="btnmaterialn" CssClass="btn btn-primary" Visible="false" runat="server" Text="agregar"  OnClick="btnmaterialn_Click"/><br/>
-                            <asp:Label ID="lbid" runat="server" Visible="false" Text=""></asp:Label>
+                            
                             <asp:Button ID="btnconfirmarmaterial" CssClass="btn btn-primary" Visible="false" runat="server" Text="Confirmar"  OnClick="btnconfirmarmaterial_Click"/>
-                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False" PageSize="5" OnSelectedIndexChanging="gvmaterial_SelectedIndexChanging" >
+                            <asp:Button ID="btnconfirmarmaterialp" CssClass="btn btn-primary" Visible="false" runat="server" Text="Confirmar" OnClick="btnconfirmarmaterialp_Click" />
+                            <asp:GridView ID="gvmaterial" CssClass="table"  runat="server" AutoGenerateColumns="False" PageSize="5"
+                                 OnSelectedIndexChanging="gvmaterial_SelectedIndexChanging" AllowPaging="True"
+                                 OnPageIndexChanging="gvmaterial_PageIndexChanging"  OnRowUpdating="gvmaterial_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     
                                     <asp:TemplateField HeaderText="" SortExpression="ID_MATERIAL">
@@ -113,18 +118,39 @@
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("CANTIDAD") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Asignar">
+                                    <asp:TemplateField HeaderText="Compra">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="LinkButton1" CssClass=" btn btn-primary" runat="server" CausesValidation="false" CommandName="Select" Text=""><i class="fa fa-cubes" ></i></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     
+                                    <asp:TemplateField HeaderText="Prestar">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" CausesValidation="false" CommandName="Update" Text="Botón"><i class="fa fa-external-link" aria-hidden="true"></i></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
                                 </Columns>
+                                <EditRowStyle BackColor="#2461BF" />
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerSettings Mode="NextPrevious" NextPageText="&gt;&gt;&gt;" PreviousPageText="&lt;&lt;&lt;" />
+                                <PagerStyle Font-Size="X-Large" HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#2461BF" ForeColor="White" />
+                                <RowStyle BackColor="#EFF3FB" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
                             </asp:GridView>
                         </div>
                         <div class="modal-foter" style="background-color:#2f8ead">
                             <br/>
                             <asp:Button ID="btnClose1"  runat="server" CssClass="btn btn-default" Text="volver" />
+                            <asp:Label ID="lbid" runat="server" Visible="false" Text=""></asp:Label>
+                            <asp:Label ID="lbid2" runat="server" Visible="false" Text="Label"></asp:Label>
+                            <asp:Label ID="lbcantidad" Visible="false" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lbcantidadp" Visible="false" runat="server" Text=""></asp:Label>
                             <br/><br/>
                         </div>
                     </div>
@@ -172,7 +198,7 @@
                     </div>
                 </div>
             </asp:Panel>
-            <asp:ModalPopupExtender ID="mpconsumible" runat="server" PopupControlID="panelconsum" TargetControlID="imcu"
+            <asp:ModalPopupExtender ID="mc1" runat="server" PopupControlID="panelconsum" TargetControlID="imcu"
                 CancelControlID="btnclose3" BackgroundCssClass="modalBackground">
             </asp:ModalPopupExtender>
             <asp:Panel ID="panelconsum" runat="server">
@@ -181,8 +207,18 @@
                         <div class="modal-header">
                             <h5>Lista de Consumibles</h5>
                         </div>
-                        <div class="modal-body">
-                           
+                        <div class="modal-body" style="text-align:center">
+                            <asp:Button ID="btnbuscarc" CssClass="btn btn-primary" runat="server" Text="Buscar" OnClick="btnbuscarc_Click" />
+                            <asp:TextBox ID="txtconsumible" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
+                            <asp:Label ID="lbconsumible" runat="server" Text=""></asp:Label>
+                            <asp:TextBox ID="txtccn" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtccc" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtccd" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtccv" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:Button ID="btnci" Visible="false" CssClass="form-control" runat="server" Text="Confirmar" />
+                            <asp:Button ID="btncg" Visible="false" CssClass="form-control" runat="server" Text="Confirmar" />
+                            <asp:Label ID="lbcid" Visible="false" CssClass="form-control" runat="server" Text=""></asp:Label>
+                            <asp:GridView ID="gvconsumible" runat="server"></asp:GridView>
                         </div>
                         <div class="modal-footer">
                             <asp:Button ID="btnclose3" CssClass="btn btn-default" runat="server" Text="Volver" />
