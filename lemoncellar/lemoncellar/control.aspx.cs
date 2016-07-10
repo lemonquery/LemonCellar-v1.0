@@ -20,8 +20,8 @@ namespace lemoncellar
             {
                 gvmaterial.DataSource = CV.listamaterial();
                 gvmaterial.DataBind();
-                gvherramientas.DataSource = CV.listaherramienta();
-                gvherramientas.DataBind();
+                //gvherramientas.DataSource = CV.listaherramienta();
+                //gvherramientas.DataBind();
                 gvconsumible.DataSource = CV.listaconsumible();
                 gvconsumible.DataBind();
             }
@@ -79,10 +79,10 @@ namespace lemoncellar
 
         protected void gvherramientas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvherramientas.PageIndex = e.NewPageIndex;
-            gvherramientas.DataSource = CV.listaherramienta();
-            gvherramientas.DataBind();
-            mpherramienta.Show();
+            //gvherramientas.PageIndex = e.NewPageIndex;
+            //gvherramientas.DataSource = CV.listaherramienta();
+            //gvherramientas.DataBind();
+            //mpherramienta.Show();
         }
 
         
