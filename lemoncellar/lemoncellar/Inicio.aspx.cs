@@ -67,7 +67,7 @@ namespace lemoncellar
                 else {
                     txtcmv.Visible = false;
                     lbmaterial.Text = "no se encontro registro, registre un nuevo material";
-
+                    agregarmat.Visible = false;
                     txtcmn.Visible = true;
                     txtcmn.Text = buscar;
                     txtcmt.Visible = true;
@@ -92,6 +92,7 @@ namespace lemoncellar
                 
             }
             else {
+                agregarmat.Visible = true;
                 gvmaterial.Visible = true;
                 txtcmn.Visible = false;
                 txtcmn.Enabled = false;
@@ -188,6 +189,7 @@ namespace lemoncellar
                     txtcmm.Visible = false;
                     txtcmm.Text = "";
                     btnconfirmarmaterial.Visible = false;
+                    agregarmat.Visible = false;
                     mm1.Show();
                 }
 
@@ -698,41 +700,9 @@ namespace lemoncellar
         {
             /* Verifies that the control is rendered */
         }
-        protected void btnmatI_Click(object sender, EventArgs e){
-            
-            
-            gvmatI.Visible = true;
-            Response.Clear();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=compras materiales.xls");
-            
-            Response.ContentType = "application/vnd.ms-excel";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter tw = new HtmlTextWriter(sw);
+             
 
-            gvmatI.RenderControl(tw);
-            Response.Write(sw.ToString());
-            Response.End();
-            gvmatI.Visible = false;
-        }     
-
-        protected void btnmatS_Click(object sender, EventArgs e)
-        {
-            
-            gvmatS.Visible = true;
-            Response.Clear();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=asignaciones materiales.xls");
-
-            Response.ContentType = "application/vnd.ms-excel";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter tw = new HtmlTextWriter(sw);
-
-            gvmatS.RenderControl(tw);
-            Response.Write(sw.ToString());
-            Response.End();
-            gvmatS.Visible = false;
-        }
+        
 
         protected void btnconI_Click(object sender, EventArgs e)
         {
@@ -787,19 +757,151 @@ namespace lemoncellar
 
         protected void btnbuscarH_Click(object sender, EventArgs e)
         {
-            string buscar = txtbuscarH.Text;
-            int aux = cov.buscarherra(buscar).Count;
-            if (aux == 0)
+            gvherramientas.Visible = true;
+            lbnombreh.Visible = false;
+            lbdetalleh.Visible = false;
+            btnconfirmarH.Visible = false;
+            if (txtbuscarH.Text.Equals(""))
             {
-                lbherramienta.Text = "no se encontro la herramienta";
+                lbherramienta.Text = "rellene los campos";
+                mh1.Show();
             }
             else {
-                gvherramientas.DataSource = cov.buscarherra(buscar);
-                gvherramientas.DataBind();
-                mh1.Show();
-                lbherramienta.Text = "";
+                string buscar = txtbuscarH.Text;
+                int aux = cov.buscarherra(buscar).Count;
+                if (aux == 0)
+                {
+                    lbherramienta.Text = "no se encontro la herramienta";
+                    mh1.Show();
+                }
+                else
+                {
+                    gvherramientas.DataSource = cov.buscarherra(buscar);
+                    gvherramientas.DataBind();
+                    mh1.Show();
+                    lbherramienta.Text = "";
+                    mh1.Show();
 
+                }
             }
+            
+        }
+
+        protected void gvherramientas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            Label id = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label1");
+            Label nombre = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label2");
+            Label valor = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label3");
+            Label detalle = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label4");
+            Label fecha = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label5");
+
+            lbidh.Text = id.Text;
+            lbnombreh.Text = nombre.Text;
+            lbdetalleh.Text = detalle.Text;
+            lbvalorh.Text = valor.Text;
+            lbfechah.Text = fecha.Text;
+
+            lbnombreh.Visible = true;
+            lbdetalleh.Visible = true;
+            lbherramienta.Text = "la siguiente herramienta sera dada de baja";
+            gvherramientas.Visible = false;
+            btnconfirmarH.Visible = true;
+            mh1.Show();
+        }
+
+        protected void btnconfirmarH_Click(object sender, EventArgs e)
+        {
+            HERRAMIENTA nueva = new HERRAMIENTA
+            {
+                ID_HERRAMIENTA = Convert.ToInt32(lbidh.Text),
+                NOMBRE = lbnombreh.Text,
+                DETALLE = lbdetalleh.Text,
+                VALOR = Convert.ToInt32(lbvalorh.Text),
+                FECHA = Convert.ToDateTime(lbfechah.Text),
+                ESTADO = "inactivo"
+
+
+            };
+            if (con.ActualizarHerramienta(nueva))
+            {
+                lbherramienta.Text = "la herramienta se dio de baja correctamente";
+                lbidh.Text = "";
+                lbnombreh.Text = "";
+                lbdetalleh.Text = "";
+                lbvalorh.Text = "";
+                lbfechah.Text = "";
+
+                lbnombreh.Visible = false;
+                lbdetalleh.Visible = false;
+                btnconfirmarH.Visible = false;
+                gvherramientas.Visible = true;
+                gvherramientas.DataBind();
+            }
+        }
+
+        protected void btnmatI_Click1(object sender, ImageClickEventArgs e)
+        {
+            gvmatI.Visible = true;
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=compras materiales.xls");
+
+            Response.ContentType = "application/vnd.ms-excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter tw = new HtmlTextWriter(sw);
+
+            gvmatI.RenderControl(tw);
+            Response.Write(sw.ToString());
+            Response.End();
+            gvmatI.Visible = false;
+        }
+
+        protected void btnmatS_Click1(object sender, ImageClickEventArgs e)
+        {
+            gvmatS.Visible = true;
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=asignaciones materiales.xls");
+
+            Response.ContentType = "application/vnd.ms-excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter tw = new HtmlTextWriter(sw);
+
+            gvmatS.RenderControl(tw);
+            Response.Write(sw.ToString());
+            Response.End();
+            gvmatS.Visible = false;
+        }
+
+        protected void agregarmat_Click(object sender, EventArgs e)
+        {
+            string buscar = "";
+            string buscart = "";
+            buscar = txtbuscarm.Text;
+            buscart = txtbuscart.Text;
+            txtcmv.Visible = false;
+            lbmaterial.Text = "agregue un material cn otra medida";
+
+            txtcmn.Visible = true;
+            txtcmn.Text = buscar;
+            txtcmt.Visible = true;
+            txtcmt.Text = buscart;
+            txtcmm.Visible = true;
+            txtcmm.Enabled = true;
+
+
+            txtcmc.Visible = false;
+            txtcmc.Text = "";
+            txtcmv.Visible = false;
+            txtcmv.Text = "";
+            btnconfirmarmaterial.Visible = false;
+            btnconfirmarmaterialp.Visible = false;
+
+            btnmaterialn.Visible = true;
+
+            gvmaterial.DataSource = null;
+            gvmaterial.DataBind();
+            mm1.Show();
         }
 
         

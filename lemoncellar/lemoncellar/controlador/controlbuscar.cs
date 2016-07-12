@@ -155,5 +155,20 @@ namespace lemoncellar.controlador
                 return false;
             }
         }
+        public bool ActualizarHerramienta(HERRAMIENTA nueva)
+        {
+            try
+            {
+                HERRAMIENTA original = new HERRAMIENTA();
+                original = modelo.HERRAMIENTA.Find(nueva.ID_HERRAMIENTA);
+                original.ESTADO = nueva.ESTADO;
+                return modelo.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
     }
 }

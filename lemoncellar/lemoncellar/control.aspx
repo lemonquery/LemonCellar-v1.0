@@ -11,7 +11,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 style="text-align: left; margin-left: 20px">BIENBENIDO AL SISTEMA DE BODEGA</h2>
+                        <asp:Image ID="ima1" ImageUrl="ima/portada.png" runat="server" />
                     </div>
                     <div class="col-md-4">
                         <br />
@@ -24,7 +24,7 @@
                 <br />
             </div>
             <br/>
-            <div class="modal-content" style="text-align: center; margin-right: 20px; margin-left: 20px">
+            <div class="modal-content" style="text-align: center; margin-right: 20px; background-color:#2f8ead; margin-left: 20px">
                 <div class="row">
                     <div class="col-md-4">
                         <br/>
@@ -51,7 +51,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div style="background-color:#2f8ead; color:white" class="modal-header text-center">
-                                <h2>BIENBENIDO</h2>
+                                <h2>BIENVENIDO</h2>
                                 <h5>al control de bodega</h5>
                             </div>
                             <div  class="modal-body text-center">                                
@@ -69,7 +69,7 @@
                                 <asp:Button ID="btningrasar"  OnClick="btningrasar_Click" CssClass="btn btn-primary " runat="server" Text="Ingresar" /><br/><br/>
                             </div>
                             <div class="modal-footer"style="background-color:#2f8ead; color:white"">
-                                <h5>Cooperativa de servicios de agua potable ltda.</h5>
+                                <h5>Cooperativa de servicios de agua potable LTDA.</h5>
                             </div>
                         </div>
                     </div>
@@ -85,8 +85,14 @@
                             <h5>Lista de materiales</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:GridView ID="gvmaterial" CssClass=" table" PageSize="5" runat="server" AllowPaging="True"  OnPageIndexChanging="gvmaterial_PageIndexChanging" CellPadding="4" ForeColor="#333333">
+                            <asp:GridView ID="gvmaterial" CssClass=" table" PageSize="5" runat="server" AllowPaging="True"  OnPageIndexChanging="gvmaterial_PageIndexChanging" CellPadding="4" ForeColor="#333333" AutoGenerateColumns="False">
                                 <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+                                    <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" ReadOnly="True" SortExpression="NOMBRE" />
+                                    <asp:BoundField DataField="TIPO" HeaderText="Tipo" ReadOnly="True" SortExpression="TIPO" />
+                                    <asp:BoundField DataField="MEDIDA" HeaderText="Medida" ReadOnly="True" SortExpression="MEDIDA" />
+                                    <asp:BoundField DataField="CANTIDAD" HeaderText="Cantidad" ReadOnly="True" SortExpression="CANTIDAD" />
+                                </Columns>
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

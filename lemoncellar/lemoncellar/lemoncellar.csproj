@@ -78,9 +78,17 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="ima\baja.png" />
+    <Content Include="ima\compras.png" />
+    <Content Include="ima\consu.png" />
     <Content Include="ima\consumible.png" />
+    <Content Include="ima\herra.jpg" />
+    <Content Include="ima\herramien.png" />
     <Content Include="ima\herramienta.jpg" />
     <Content Include="ima\material.png" />
+    <Content Include="ima\mater.png" />
+    <Content Include="ima\movimientos.png" />
+    <Content Include="ima\portada.png" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
@@ -142,6 +150,7 @@
     <Content Include="less\stacked.less" />
     <Content Include="less\variables.less" />
     <Content Include="Site1.Master" />
+    <None Include="Properties\PublishProfiles\lemoncellar.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

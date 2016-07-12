@@ -24,6 +24,7 @@ namespace lemoncellar.controlador
                 return null;
             }
         }
+
         public List<object> buscarherra(string buscar)
         {
             try
@@ -47,6 +48,23 @@ namespace lemoncellar.controlador
                 var consulta = from herra in contexto.HERRAMIENTA
                                
                                select new { herra.NOMBRE, herra.DETALLE, herra.FECHA, herra.ESTADO, herra.VALOR };
+
+                return consulta.ToList<object>();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+        public List<object> listaherramienta()
+        {
+            try
+            {
+                var consulta = from herra in contexto.HERRAMIENTA
+                               where herra.ESTADO == "activo"
+                               select new { herra.NOMBRE, herra.DETALLE, herra.FECHA
+                               };
 
                 return consulta.ToList<object>();
             }

@@ -4,5 +4,8 @@
     opacity: 0.6;
 }
 body {
-background-color:#2f8ead
+background-color:#00ffff;
+}
+ImageButton {
+    box-shadow:Black;
 }

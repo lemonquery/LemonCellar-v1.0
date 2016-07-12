@@ -22,6 +22,15 @@ namespace lemoncellar {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Control ima1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ima1;
+        
+        /// <summary>
         /// Control btnShow.
         /// </summary>
         /// <remarks>

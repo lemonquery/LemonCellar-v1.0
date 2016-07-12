@@ -22,6 +22,15 @@ namespace lemoncellar {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Control ima1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ima1;
+        
+        /// <summary>
         /// Control btncerrar.
         /// </summary>
         /// <remarks>
@@ -37,7 +46,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button immu;
+        protected global::System.Web.UI.WebControls.ImageButton immu;
         
         /// <summary>
         /// Control btnmatI.
@@ -46,7 +55,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnmatI;
+        protected global::System.Web.UI.WebControls.ImageButton btnmatI;
         
         /// <summary>
         /// Control btnmatS.
@@ -55,7 +64,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnmatS;
+        protected global::System.Web.UI.WebControls.ImageButton btnmatS;
         
         /// <summary>
         /// Control gvmatI.
@@ -76,22 +85,22 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.GridView gvmatS;
         
         /// <summary>
-        /// Control btnverh.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnverh;
-        
-        /// <summary>
         /// Control btnherra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnherra;
+        protected global::System.Web.UI.WebControls.ImageButton btnherra;
+        
+        /// <summary>
+        /// Control btnverh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnverh;
         
         /// <summary>
         /// Control lbagregado.
@@ -109,7 +118,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnherL;
+        protected global::System.Web.UI.WebControls.ImageButton btnherL;
         
         /// <summary>
         /// Control gvherL.
@@ -127,7 +136,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imcu;
+        protected global::System.Web.UI.WebControls.ImageButton imcu;
         
         /// <summary>
         /// Control btnconI.
@@ -136,7 +145,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnconI;
+        protected global::System.Web.UI.WebControls.ImageButton btnconI;
         
         /// <summary>
         /// Control btnconG.
@@ -145,7 +154,7 @@ namespace lemoncellar {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnconG;
+        protected global::System.Web.UI.WebControls.ImageButton btnconG;
         
         /// <summary>
         /// Control gvconI.
@@ -209,6 +218,15 @@ namespace lemoncellar {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbuscart;
+        
+        /// <summary>
+        /// Control agregarmat.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton agregarmat;
         
         /// <summary>
         /// Control lbmaterial.
@@ -758,6 +776,60 @@ namespace lemoncellar {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvherramientas;
+        
+        /// <summary>
+        /// Control lbidh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbidh;
+        
+        /// <summary>
+        /// Control lbnombreh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbnombreh;
+        
+        /// <summary>
+        /// Control lbdetalleh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbdetalleh;
+        
+        /// <summary>
+        /// Control lbvalorh.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbvalorh;
+        
+        /// <summary>
+        /// Control lbfechah.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbfechah;
+        
+        /// <summary>
+        /// Control btnconfirmarH.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnconfirmarH;
         
         /// <summary>
         /// Control Button1.

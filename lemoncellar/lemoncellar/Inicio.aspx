@@ -10,10 +10,10 @@
         <ContentTemplate>
             <br />
             <div class="modal-content" style="text-align: right; margin-right: 20px; margin-left: 20px">
-                <br />
+                
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 style="text-align: left; margin-left: 20px">BIENBENIDO AL CONTROL DE BODEGA</h2>
+                        <asp:Image ID="ima1" ImageUrl="ima/portada.png" runat="server" />
                     </div>
                     <div class="col-md-4">
                         <br />
@@ -26,13 +26,14 @@
                 <br />
             </div>
             <br/>
-            <div class="modal-content" style="text-align: center; margin-right: 20px; margin-left: 20px">
+            <div class="modal-content" style="text-align: center; margin-right: 20px; margin-left: 20px; background-color:#2f8ead">
                 <div class="row">
                     <div class="col-md-4">
                         <br/>
-                        <asp:Button ID="immu" CssClass="btn btn-primary" runat="server" Text="compra" /><br/><br/>
-                        <asp:Button ID="btnmatI" CssClass="btn btn-primary" runat="server" Text="Ver Compras" OnClick="btnmatI_Click" /><br /><br/>
-                        <asp:Button ID="btnmatS" CssClass="btn btn-primary" runat="server" Text="Ver Movimientos" OnClick="btnmatS_Click" /><br/><br/>
+                        <asp:ImageButton ID="immu" ImageUrl="ima/mater.png" runat="server" /><br/><br/>
+                        <asp:ImageButton ID="btnmatI" ImageUrl="ima/compras.png" OnClick="btnmatI_Click1" runat="server" /><br/><br/>
+                        <asp:ImageButton ID="btnmatS" ImageUrl="ima/movimientos.png" OnClick="btnmatS_Click1"   runat="server" /><br/><br/>
+                        
                         <asp:GridView ID="gvmatI" Visible="false" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" >
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#2461BF" />
@@ -60,14 +61,15 @@
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
        
-                        <br />
+                        
                     </div>
                     <div class="col-md-4">
                         <br/>
-                        <asp:Button ID="btnverh" CssClass="btn btn-primary" runat="server" Text="dar de baja" /><br/><br/>
-                        <asp:Button ID="btnherra" CssClass="btn btn-primary" runat="server" Text="agregar" /><br/><br/>
+                        <asp:ImageButton ID="btnherra" ImageUrl="ima/herra.jpg" runat="server" /><br/><br/>
+                        
+                        <asp:ImageButton ID="btnverh" ImageUrl="ima/baja.png" runat="server"  /><br/><br/>
                         <asp:Label ID="lbagregado" runat="server" Text=""></asp:Label>
-                        <asp:Button ID="btnherL" CssClass="btn btn-primary" OnClick="btnherL_Click" runat="server" Text=" ver Herramientas" />
+                        <asp:ImageButton ID="btnherL" ImageUrl="ima/herramien.png"  OnClick="btnherL_Click" runat="server"  />
                         <asp:GridView ID="gvherL" CssClass="table" Visible="False" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#2461BF" />
@@ -84,10 +86,10 @@
                     </div>
                     <div class="col-md-4">
                         <br/>
-                        
-                        <asp:Button ID="imcu" CssClass="btn btn-primary" runat="server" Text="compra" /><br/><br/>
-                        <asp:Button ID="btnconI" CssClass="btn btn-primary" runat="server" OnClick="btnconI_Click" Text="ver compras" /><br/><br/>
-                        <asp:Button ID="btnconG" CssClass="btn btn-primary" runat="server" OnClick="btnconG_Click" Text="ver movimientos" /><br/><br/>
+                        <asp:ImageButton ID="imcu" ImageUrl="ima/consu.png" runat="server" /><br/><br/>
+
+                        <asp:ImageButton ID="btnconI" ImageUrl="ima/compras.png" runat="server" OnClick="btnconI_Click" /><br/><br/>
+                        <asp:ImageButton ID="btnconG" ImageUrl="ima/movimientos.png" runat="server" OnClick="btnconG_Click" /><br/><br/>
                         <asp:GridView ID="gvconI" CssClass="table" Visible="False" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#2461BF" />
@@ -125,13 +127,15 @@
             <asp:Panel ID="panelm1" runat="server" CssClass="modalPopup" align="center" >
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header"  style="background-color:#2f8ead">
-                            <h4>Material</h4>
+                        <div class="modal-header"  style="background-color:#2f8ead; color:white;">
+                            <h4>Materiales</h4>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="bbuscarmaterial" CssClass="btn btn-primary" OnClick="bbuscarmaterial_Click" runat="server" Text="buscar" />
                             <asp:TextBox ID="txtbuscarm" CssClass="form-control-static" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtbuscart" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
+                            <asp:TextBox ID="txtbuscart" CssClass="form-control-static" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="agregarmat" Visible="false" CssClass="btn btn-primary" OnClick="agregarmat_Click" runat="server"><i class="fa fa-archive" aria-hidden="true"></i></asp:LinkButton>
+                            <br/>
                             <asp:Label ID="lbmaterial" runat="server" Text=""></asp:Label>
                             <br /><br/>              
                                        
@@ -246,8 +250,8 @@
             <asp:Panel ID="panelherra" runat="server">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>Lista de Herramientas</h5>
+                        <div class="modal-header" style="background-color:#2f8ead; color:white; text-align:center">
+                            <h5>Herramientas</h5>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <div class="input-group">
@@ -270,10 +274,11 @@
                                 </asp:DropDownList>
                             </div>
                             <br/><br/>
+                            <asp:Button ID="btnagregarh" CssClass="btn btn-primary" OnClick="btnagregarh_Click" runat="server" Text="agregar" />
                             
                         </div>
-                        <div class="modal-footer">
-                            <asp:Button ID="btnagregarh" CssClass="btn btn-primary" OnClick="btnagregarh_Click" runat="server" Text="agregar" />
+                        <div class="modal-footer" style="background-color:#2f8ead">
+                            
                             <asp:Button ID="btnclose2" CssClass="btn btn-default" runat="server" Text="Volver" />
 
                         </div>
@@ -286,8 +291,8 @@
             <asp:Panel ID="panelconsum" runat="server">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>Lista de Consumibles</h5>
+                        <div class="modal-header" style="background-color:#2f8ead;color:white; text-align:center">
+                            <h5>Consumibles</h5>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="btnbuscarc" CssClass="btn btn-primary" runat="server" Text="Buscar" OnClick="btnbuscarc_Click" />
@@ -367,7 +372,7 @@
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
                             </asp:GridView>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" style="background-color:#2f8ead">
                             <asp:Button ID="btnclose3" CssClass="btn btn-default" runat="server" Text="Volver" />
                         </div>
                         
@@ -381,7 +386,7 @@
             </asp:ModalPopupExtender>
             <asp:Panel ID="Panel3" runat="server">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" style="text-align:center">
                         <div class="modal-header">
                             <h5>Lista de Herramientas</h5>
                         </div>
@@ -389,7 +394,7 @@
                             <asp:Button ID="btnbuscarH" CssClass="btn btn-primary" runat="server" OnClick="btnbuscarH_Click" Text="Buscar" />
                             <asp:TextBox ID="txtbuscarH" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
                             <asp:Label ID="lbherramienta" runat="server" Text=""></asp:Label>
-                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnSelectedIndexChanging="gvherramientas_SelectedIndexChanging">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField SortExpression="ID_HERRAMIENTA">
@@ -400,20 +405,12 @@
                                             <asp:Label ID="Label1" runat="server" Visible="false" Text='<%# Bind("ID_HERRAMIENTA") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Nomnre" SortExpression="NOMBRE">
+                                    <asp:TemplateField HeaderText="Nombre" SortExpression="NOMBRE">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label2" runat="server" Text='<%# Eval("NOMBRE") %>'></asp:Label>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("NOMBRE") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField SortExpression="VALOR">
-                                        <EditItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Visible="false" Text='<%# Eval("VALOR") %>'></asp:Label>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Visible="false" Text='<%# Bind("VALOR") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Detalle" SortExpression="DETALLE">
@@ -422,6 +419,14 @@
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("DETALLE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField SortExpression="VALOR">
+                                        <EditItemTemplate>
+                                            <asp:Label ID="Label3" runat="server" Visible="false" Text='<%# Eval("VALOR") %>'></asp:Label>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label3" runat="server" Visible="false" Text='<%# Bind("VALOR") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField SortExpression="FECHA">
@@ -434,7 +439,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="bajar">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Select" Text=""><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CssClass="btn btn-primary" CommandName="Select" Text=""><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -449,6 +454,13 @@
                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
                             </asp:GridView>
+                            
+                            <asp:Label ID="lbidh" Visible="false" runat="server" CssClass="form-control" Text=""></asp:Label>
+                            <asp:Label ID="lbnombreh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
+                            <asp:Label ID="lbdetalleh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
+                            <asp:Label ID="lbvalorh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
+                            <asp:Label ID="lbfechah" Visible="false" runat="server"   CssClass="form-control" Text=""></asp:Label>
+                            <asp:Button ID="btnconfirmarH" CssClass="btn btn-primary"  OnClick="btnconfirmarH_Click" Visible="false" runat="server" Text="Confirmar" />
                         </div>
                         <div class="modal-footer">
                             <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Volver" />
