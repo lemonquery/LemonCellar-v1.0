@@ -20,6 +20,7 @@ namespace lemoncellar
     {
         controlbuscar con = new controlbuscar();
         controlvistas cov = new controlvistas();
+        DateTime date = DateTime.Now;
         lemoncellarEntities contexto = new lemoncellarEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,16 +31,11 @@ namespace lemoncellar
             scriptManager.RegisterPostBackControl(this.btnconG);
             scriptManager.RegisterPostBackControl(this.btnherL);
             //Further code goes here....
-            
+
             if (!IsPostBack)
             {
 
-                gvmaterial.DataSource = con.buscarmaterials();
-                gvmaterial.DataBind();
-                gvconsumible.DataSource = con.buscarconsumibles();
-                gvconsumible.DataBind();
-                gvherramientas.DataSource = cov.buscarherras();
-                gvherramientas.DataBind();
+                
                 
                 gvmatI.DataSource = cov.listamaterialI();
                 gvmatI.DataBind();
@@ -141,7 +137,7 @@ namespace lemoncellar
             string detalle = "";
             int valor = 0;
             string estado = "";
-            DateTime fecha = DateTime.Today;
+            DateTime fecha = DateTime.Now;
 
             nombre = txthnombre.Text;
             detalle = txthdetalle.Text;
@@ -602,6 +598,7 @@ namespace lemoncellar
                     txtccd.Text = "";
                     btnguardar.Visible = false;
                     gvconsumible.Visible = true;
+                    gvconsumible.DataBind();
                     lbconsumible.Text = "agregado correctamente";
                     mc1.Show();
                     
@@ -758,7 +755,7 @@ namespace lemoncellar
             gvconI.Visible = true;
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=Compras consumibles.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Compras consumibles(" + date + ").xls");
 
             Response.ContentType = "application/vnd.ms-excel";
             StringWriter sw = new StringWriter();
@@ -775,7 +772,7 @@ namespace lemoncellar
             gvconG.Visible = true;
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=asignacione consumibles.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=asignaciones consumibles("+date+").xls");
 
             Response.ContentType = "application/vnd.ms-excel";
             StringWriter sw = new StringWriter();
@@ -792,7 +789,7 @@ namespace lemoncellar
             gvherL.Visible = true;
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=herramientas.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=herramientas("+date+").xls");
 
             Response.ContentType = "application/vnd.ms-excel";
             StringWriter sw = new StringWriter();
@@ -907,7 +904,7 @@ namespace lemoncellar
             gvmatI.Visible = true;
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=compras materiales.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=compras materiales("+date+").xls");
 
             Response.ContentType = "application/vnd.ms-excel";
             StringWriter sw = new StringWriter();
@@ -924,7 +921,7 @@ namespace lemoncellar
             gvmatS.Visible = true;
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=asignaciones materiales.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=asignaciones materiales("+date+").xls");
 
             Response.ContentType = "application/vnd.ms-excel";
             StringWriter sw = new StringWriter();

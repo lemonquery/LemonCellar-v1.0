@@ -211,6 +211,24 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.TextBox txtbuscart;
         
         /// <summary>
+        /// Control FilteredTextBoxExtender17.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender17;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender18.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender18;
+        
+        /// <summary>
         /// Control agregarmat.
         /// </summary>
         /// <remarks>
@@ -578,6 +596,15 @@ namespace lemoncellar {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtconsumible;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender19.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender19;
         
         /// <summary>
         /// Control lbconsumible.

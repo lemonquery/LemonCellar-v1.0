@@ -134,6 +134,8 @@
                             <asp:Button ID="bbuscarmaterial" CssClass="btn btn-primary" OnClick="bbuscarmaterial_Click" runat="server" Text="buscar" />
                             <asp:TextBox ID="txtbuscarm" MaxLength="50" placeholder="Nombre del Material" CssClass="form-control-static" runat="server"></asp:TextBox>
                             <asp:TextBox ID="txtbuscart" MaxLength="50" placeholder="Tipo de Material" CssClass="form-control-static" runat="server"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender17" TargetControlID="txtbuscarm"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890"  runat="server"></asp:FilteredTextBoxExtender>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender18" TargetControlID="txtbuscart"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890"  runat="server"></asp:FilteredTextBoxExtender>
                             <asp:LinkButton ID="agregarmat" Visible="false" CssClass="btn btn-primary" OnClick="agregarmat_Click" runat="server"><i class="fa fa-archive" aria-hidden="true"> otra medida</i></asp:LinkButton>
                             <br/>
                             <asp:Label ID="lbmaterial" runat="server" Text=""></asp:Label>
@@ -286,6 +288,7 @@
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="btnbuscarc" CssClass="btn btn-primary" runat="server" Text="Buscar" OnClick="btnbuscarc_Click" />
                             <asp:TextBox ID="txtconsumible" MaxLength="50" placeholder="Nombre del Consumible" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender19" TargetControlID="txtconsumible"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender>
                             <asp:Label ID="lbconsumible" runat="server" Text=""></asp:Label>
                             <asp:TextBox ID="txtccn" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="Nombre" ></asp:TextBox>
                             <asp:TextBox ID="txtccc" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="Cantidad" ></asp:TextBox>                             
