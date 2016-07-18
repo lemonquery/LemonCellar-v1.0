@@ -28,7 +28,7 @@
             <br/>
             <div class="modal-content" style="text-align: center; margin-right: 20px; margin-left: 20px; background-color:#2f8ead">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="">
                         <br/>
                         <asp:ImageButton ID="immu" ImageUrl="ima/mater.png" runat="server" /><br/><br/>
                         <asp:ImageButton ID="btnmatI" ImageUrl="ima/compras.png" OnClick="btnmatI_Click1" runat="server" /><br/><br/>
@@ -63,13 +63,13 @@
        
                         
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="border-left:solid 3px #2ab6b6;border-right:solid 3px #2ab6b6">
                         <br/>
                         <asp:ImageButton ID="btnherra" ImageUrl="ima/herra.jpg" runat="server" /><br/><br/>
                         
                         <asp:ImageButton ID="btnverh" ImageUrl="ima/baja.png" runat="server"  /><br/><br/>
-                        <asp:Label ID="lbagregado" runat="server" Text=""></asp:Label>
-                        <asp:ImageButton ID="btnherL" ImageUrl="ima/herramien.png"  OnClick="btnherL_Click" runat="server"  />
+                        
+                        <asp:ImageButton ID="btnherL" ImageUrl="ima/herramien.png"  OnClick="btnherL_Click" runat="server"  /><br/><br/>
                         <asp:GridView ID="gvherL" CssClass="table" Visible="False" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <EditRowStyle BackColor="#2461BF" />
@@ -84,7 +84,7 @@
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="">
                         <br/>
                         <asp:ImageButton ID="imcu" ImageUrl="ima/consu.png" runat="server" /><br/><br/>
 
@@ -128,24 +128,24 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header"  style="background-color:#2f8ead; color:white;">
-                            <h4>Materiales</h4>
+                            <h4>Gestion de Materiales</h4>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="bbuscarmaterial" CssClass="btn btn-primary" OnClick="bbuscarmaterial_Click" runat="server" Text="buscar" />
-                            <asp:TextBox ID="txtbuscarm" CssClass="form-control-static" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtbuscart" CssClass="form-control-static" runat="server"></asp:TextBox>
-                            <asp:LinkButton ID="agregarmat" Visible="false" CssClass="btn btn-primary" OnClick="agregarmat_Click" runat="server"><i class="fa fa-archive" aria-hidden="true"></i></asp:LinkButton>
+                            <asp:TextBox ID="txtbuscarm" MaxLength="50" placeholder="Nombre del Material" CssClass="form-control-static" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtbuscart" MaxLength="50" placeholder="Tipo de Material" CssClass="form-control-static" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="agregarmat" Visible="false" CssClass="btn btn-primary" OnClick="agregarmat_Click" runat="server"><i class="fa fa-archive" aria-hidden="true"> otra medida</i></asp:LinkButton>
                             <br/>
                             <asp:Label ID="lbmaterial" runat="server" Text=""></asp:Label>
                             <br /><br/>              
                                        
-                            <asp:TextBox ID="txtcmn" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Nombre"></asp:TextBox>                           
-                            <asp:TextBox ID="txtcmt" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Tipo"></asp:TextBox>
-                            <asp:TextBox ID="txtcmm" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Medida"></asp:TextBox>
-                            <asp:TextBox ID="txtcmc" Visible="false" CssClass="form-control"  runat="server" placeholder=" ingrese la Cantidad"></asp:TextBox>
-                            <asp:TextBox ID="txtcmv" Visible="false"  CssClass="form-control" placeholder="precio" runat="server"></asp:TextBox>                             
-                            <asp:TextBox ID="txtcmr" placeholder="Responsable" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtcmd" placeholder="comentario" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmn" MaxLength="50" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Nombre"></asp:TextBox>                           
+                            <asp:TextBox ID="txtcmt" MaxLength="50" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Tipo"></asp:TextBox>
+                            <asp:TextBox ID="txtcmm" MaxLength="50" Visible="false" CssClass="form-control" Enabled="false" runat="server" placeholder="Medida"></asp:TextBox>
+                            <asp:TextBox ID="txtcmc" MaxLength="50" Visible="false" CssClass="form-control"  runat="server" placeholder=" ingrese la Cantidad"></asp:TextBox>
+                            <asp:TextBox ID="txtcmv" MaxLength="50" Visible="false"  CssClass="form-control" placeholder="precio unitario" runat="server"></asp:TextBox>                             
+                            <asp:TextBox ID="txtcmr" MaxLength="50" placeholder="Responsable" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtcmd" MaxLength="50" placeholder="comentario" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
                              <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" TargetControlID="txtcmn"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890"  runat="server"></asp:FilteredTextBoxExtender>
                              <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtcmt"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender>
                              <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" TargetControlID="txtcmm"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender>
@@ -251,28 +251,17 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#2f8ead; color:white; text-align:center">
-                            <h5>Herramientas</h5>
+                            <h4>Gestion de Herramientas</h4>
                         </div>
                         <div class="modal-body" style="text-align:center">
-                            <div class="input-group">
-                                <span class="input-group-addon">Nombre</span>
-                                <asp:TextBox ID="txthnombre" CssClass="form-control"  runat="server"></asp:TextBox>
-                            </div><br/><br/>
-                            <div class="input-group">
-                                <span class="input-group-addon">Detalle</span>
-                                <asp:TextBox ID="txthdetalle" CssClass="form-control"  runat="server"></asp:TextBox>
-                            </div><br/><br/>
-                            <div class="input-group">
-                                <span class="input-group-addon">Valor</span>
-                                <asp:TextBox ID="txthvalor" CssClass="form-control"  runat="server"></asp:TextBox>
-                            </div><br/><br/>
-                            <div class="input-group" style="text-align:center">
-                                <div class="input-group-addon">Estado</div>                                
-                                <asp:DropDownList ID="ddhestado" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="activo">activo</asp:ListItem>
-                                    <asp:ListItem Value="inactivo">inactivo</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
+                            <asp:Label ID="lbtexth" runat="server" Text="Ingrese la Compra de la Herramienta Nueva"></asp:Label><br/><br/>
+                            <asp:TextBox ID="txthnombre" MaxLength="50" CssClass="form-control" placeholder="Nombre" runat="server"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender14" TargetControlID="txthnombre"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender><br/><br/>
+                            <asp:TextBox ID="txthdetalle" MaxLength="50" CssClass="form-control" placeholder="Detalle"  runat="server"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender15" TargetControlID="txthdetalle"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender><br/><br/>
+                            <asp:TextBox ID="txthvalor" MaxLength="50" CssClass="form-control" placeholder="Valor"  runat="server"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender16" TargetControlID="txthvalor" ValidChars="1234567890" runat="server"></asp:FilteredTextBoxExtender><br/><br/>
+                            <asp:Label ID="ddhestados" runat="server" Visible="false" Text="activo"></asp:Label>
                             <br/><br/>
                             <asp:Button ID="btnagregarh" CssClass="btn btn-primary" OnClick="btnagregarh_Click" runat="server" Text="agregar" />
                             
@@ -292,18 +281,18 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#2f8ead;color:white; text-align:center">
-                            <h5>Consumibles</h5>
+                            <h4>Gestion de Consumibles</h4>
                         </div>
                         <div class="modal-body" style="text-align:center">
                             <asp:Button ID="btnbuscarc" CssClass="btn btn-primary" runat="server" Text="Buscar" OnClick="btnbuscarc_Click" />
-                            <asp:TextBox ID="txtconsumible" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
+                            <asp:TextBox ID="txtconsumible" MaxLength="50" placeholder="Nombre del Consumible" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
                             <asp:Label ID="lbconsumible" runat="server" Text=""></asp:Label>
-                            <asp:TextBox ID="txtccn" Visible="false" CssClass="form-control" runat="server" placeholder="Nombre" ></asp:TextBox>
-                            <asp:TextBox ID="txtccc" Visible="false" CssClass="form-control" runat="server" placeholder="Cantidad" ></asp:TextBox>                             
-                            <asp:TextBox ID="txtccd" Visible="false" CssClass="form-control" runat="server" placeholder="comentario" ></asp:TextBox>
-                            <asp:TextBox ID="txtccv" Visible="false" CssClass="form-control" runat="server" placeholder="valor" ></asp:TextBox>
-                             <asp:TextBox ID="txtccd2" Visible="false" CssClass="form-control" runat="server" placeholder="comentario" ></asp:TextBox>
-                            <asp:TextBox ID="txtccc2" Visible="false" CssClass="form-control" runat="server" placeholder="Cantidad" ></asp:TextBox><br/>
+                            <asp:TextBox ID="txtccn" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="Nombre" ></asp:TextBox>
+                            <asp:TextBox ID="txtccc" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="Cantidad" ></asp:TextBox>                             
+                            <asp:TextBox ID="txtccd" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="comentario" ></asp:TextBox>
+                            <asp:TextBox ID="txtccv" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="valor" ></asp:TextBox>
+                             <asp:TextBox ID="txtccd2" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="comentario" ></asp:TextBox>
+                            <asp:TextBox ID="txtccc2" MaxLength="50" Visible="false" CssClass="form-control" runat="server" placeholder="Cantidad" ></asp:TextBox><br/>
                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender8" TargetControlID="txtccn"  ValidChars="abcdefghijklmnopqrstuvwxyzñáéíóúü /-1234567890" runat="server"></asp:FilteredTextBoxExtender>
                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender9" TargetControlID="txtccc" FilterType="Numbers" runat="server"></asp:FilteredTextBoxExtender>
                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender13" TargetControlID="txtccc2" FilterType="Numbers" runat="server"></asp:FilteredTextBoxExtender>
@@ -314,7 +303,7 @@
                             <asp:Label ID="lbcid" Visible="false" CssClass="form-control" runat="server" Text=""></asp:Label>
                             <asp:Button ID="btnconfirmarI" Visible="false" CssClass="btn btn-primary" runat="server" Text="Confirmar" OnClick="btnconfirmarI_Click" />
                             <asp:Button ID="btnconfirmarG" Visible="false" CssClass="btn btn-primary" runat="server" Text="Confirmar" OnClick="btnconfirmarG_Click" />
-                            <asp:GridView ID="gvconsumible" runat="server" CssClass="table" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowUpdating="gvconsumible_RowUpdating" OnSelectedIndexChanging="gvconsumible_SelectedIndexChanging">
+                            <asp:GridView ID="gvconsumible" runat="server" CssClass="table" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowUpdating="gvconsumible_RowUpdating" OnSelectedIndexChanging="gvconsumible_SelectedIndexChanging" AllowPaging="True" OnPageIndexChanging="gvconsumible_PageIndexChanging" PageSize="5">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField SortExpression="ID_CONSUMIBLE">
@@ -363,6 +352,7 @@
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerSettings Mode="NextPrevious" NextPageText="&gt;&gt;&gt;" PreviousPageText="&lt;&lt;&lt;" />
                                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#EFF3FB" />
                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -386,15 +376,15 @@
             </asp:ModalPopupExtender>
             <asp:Panel ID="Panel3" runat="server">
                 <div class="modal-dialog">
-                    <div class="modal-content" style="text-align:center">
-                        <div class="modal-header">
-                            <h5>Lista de Herramientas</h5>
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#2f8ead; color:white; text-align:center" >
+                            <h5>Dar de baja una herramienta</h5>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="text-align:center">
                             <asp:Button ID="btnbuscarH" CssClass="btn btn-primary" runat="server" OnClick="btnbuscarH_Click" Text="Buscar" />
-                            <asp:TextBox ID="txtbuscarH" CssClass="form-control-static" runat="server"></asp:TextBox><br/>
+                            <asp:TextBox ID="txtbuscarH" CssClass="form-control-static" placeholder="Nombre de la Herramienta" runat="server"></asp:TextBox><br/>
                             <asp:Label ID="lbherramienta" runat="server" Text=""></asp:Label>
-                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnSelectedIndexChanging="gvherramientas_SelectedIndexChanging">
+                            <asp:GridView ID="gvherramientas" CssClass="table btn-primary" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnSelectedIndexChanging="gvherramientas_SelectedIndexChanging" AllowPaging="True" OnPageIndexChanging="gvherramientas_PageIndexChanging" PageSize="5">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField SortExpression="ID_HERRAMIENTA">
@@ -446,6 +436,7 @@
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <PagerSettings Mode="NextPrevious" NextPageText="&gt;&gt;&gt;" PreviousPageText="&lt;&lt;&lt;" />
                                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#EFF3FB" />
                                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -459,10 +450,10 @@
                             <asp:Label ID="lbnombreh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
                             <asp:Label ID="lbdetalleh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
                             <asp:Label ID="lbvalorh" Visible="false" runat="server"  CssClass="form-control" Text=""></asp:Label>
-                            <asp:Label ID="lbfechah" Visible="false" runat="server"   CssClass="form-control" Text=""></asp:Label>
+                            <asp:Label ID="lbfechah" Visible="false" runat="server"   CssClass="form-control" Text=""></asp:Label><br/>
                             <asp:Button ID="btnconfirmarH" CssClass="btn btn-primary"  OnClick="btnconfirmarH_Click" Visible="false" runat="server" Text="Confirmar" />
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" style="background-color:#2f8ead">
                             <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="Volver" />
                         </div>
                     </div>

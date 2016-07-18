@@ -41,6 +41,22 @@ namespace lemoncellar.controlador
                 return null;
             }
         }
+        public List<object> buscarherras()
+        {
+            try
+            {
+                var consulta = from herra in contexto.HERRAMIENTA
+                               where herra.ESTADO.Equals("activo") 
+                               select herra;
+
+                return consulta.ToList<object>();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
         public List<object> listaherramientaL()
         {
             try

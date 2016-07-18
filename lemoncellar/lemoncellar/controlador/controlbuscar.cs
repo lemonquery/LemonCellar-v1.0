@@ -27,11 +27,40 @@ namespace lemoncellar.controlador
             }
 
         }
+        public List<object> buscarmaterials()
+        {
+            try
+            {
+                var consulta = from ma in modelo.MATERIAL
+                               select new { ma.ID_MATERIAL, ma.NOMBRE, ma.TIPO, ma.MEDIDA, ma.CANTIDAD };
+
+                return consulta.ToList<object>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
         public List<object> buscarconsumible(String buscar) {
             try
             {
                 var consulta = from co in modelo.CONSUMIBLE
                                where co.NOMBRE == buscar
+                               select co;
+                return consulta.ToList<object>();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+        public List<object> buscarconsumibles()
+        {
+            try
+            {
+                var consulta = from co in modelo.CONSUMIBLE
                                select co;
                 return consulta.ToList<object>();
             }

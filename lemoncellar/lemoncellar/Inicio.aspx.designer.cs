@@ -103,15 +103,6 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.ImageButton btnverh;
         
         /// <summary>
-        /// Control lbagregado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbagregado;
-        
-        /// <summary>
         /// Control btnherL.
         /// </summary>
         /// <remarks>
@@ -463,6 +454,15 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.Panel panelherra;
         
         /// <summary>
+        /// Control lbtexth.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbtexth;
+        
+        /// <summary>
         /// Control txthnombre.
         /// </summary>
         /// <remarks>
@@ -470,6 +470,15 @@ namespace lemoncellar {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txthnombre;
+        
+        /// <summary>
+        /// Control FilteredTextBoxExtender14.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender14;
         
         /// <summary>
         /// Control txthdetalle.
@@ -481,6 +490,15 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.TextBox txthdetalle;
         
         /// <summary>
+        /// Control FilteredTextBoxExtender15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender15;
+        
+        /// <summary>
         /// Control txthvalor.
         /// </summary>
         /// <remarks>
@@ -490,13 +508,22 @@ namespace lemoncellar {
         protected global::System.Web.UI.WebControls.TextBox txthvalor;
         
         /// <summary>
-        /// Control ddhestado.
+        /// Control FilteredTextBoxExtender16.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddhestado;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender16;
+        
+        /// <summary>
+        /// Control ddhestados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddhestados;
         
         /// <summary>
         /// Control btnagregarh.

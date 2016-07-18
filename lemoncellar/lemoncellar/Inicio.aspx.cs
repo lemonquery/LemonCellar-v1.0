@@ -23,15 +23,23 @@ namespace lemoncellar
         lemoncellarEntities contexto = new lemoncellarEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
+            ScriptManager scriptManager = ScriptManager.GetCurrent(this.Page);
+            scriptManager.RegisterPostBackControl(this.btnmatS);
+            scriptManager.RegisterPostBackControl(this.btnmatI);
+            scriptManager.RegisterPostBackControl(this.btnconI);
+            scriptManager.RegisterPostBackControl(this.btnconG);
+            scriptManager.RegisterPostBackControl(this.btnherL);
+            //Further code goes here....
+            
             if (!IsPostBack)
             {
-                ScriptManager scriptManager = ScriptManager.GetCurrent(this.Page);
-                scriptManager.RegisterPostBackControl(this.btnmatS);
-                scriptManager.RegisterPostBackControl(this.btnmatI);
-                scriptManager.RegisterPostBackControl(this.btnconI);
-                scriptManager.RegisterPostBackControl(this.btnconG);
-                scriptManager.RegisterPostBackControl(this.btnherL);
-                //Further code goes here....
+
+                gvmaterial.DataSource = con.buscarmaterials();
+                gvmaterial.DataBind();
+                gvconsumible.DataSource = con.buscarconsumibles();
+                gvconsumible.DataBind();
+                gvherramientas.DataSource = cov.buscarherras();
+                gvherramientas.DataBind();
                 
                 gvmatI.DataSource = cov.listamaterialI();
                 gvmatI.DataBind();
@@ -52,6 +60,19 @@ namespace lemoncellar
         //material
         protected void bbuscarmaterial_Click(object sender, EventArgs e)
         {
+            txtcmn.Text = "";
+            txtcmn.Visible = false;
+            txtcmt.Text = "";
+            txtcmt.Visible = false;
+            txtcmm.Text = "";
+            txtcmm.Visible = false;
+            txtcmc.Text="";
+            txtcmc.Visible = false;
+            txtcmv.Text = "";
+            txtcmv.Visible = false;
+            btnconfirmarmaterial.Visible = false;
+            btnmaterialn.Visible = false;
+
             string buscar = "";
             string buscart = "";
             buscar = txtbuscarm.Text;
@@ -124,33 +145,43 @@ namespace lemoncellar
 
             nombre = txthnombre.Text;
             detalle = txthdetalle.Text;
-            valor = Convert.ToInt32(txthvalor.Text);
-            estado = ddhestado.SelectedValue;
+            
+            estado = ddhestados.Text;
 
-            if (nombre.Equals("") || detalle.Equals("") ||  valor == 0)
+            if (nombre.Equals("") || detalle.Equals(""))
             {
-                lbagregado.Text = "rellene campos";
+                lbtexth.Text = "rellene campos";
+                mpherramienta.Show();
             }
             else {
-                
-                HERRAMIENTA nuevo = new HERRAMIENTA
+                valor = Convert.ToInt32(txthvalor.Text);
+                if (valor == 0)
                 {
-                    NOMBRE = nombre,
-                    DETALLE = detalle,
-                    VALOR = valor,
-                    FECHA = fecha,
-                    ESTADO = estado,
-
-                };
-
-                if (con.agregarherramienta(nuevo))
-                {
-                    lbagregado.Text = "agregado";
-                    gvherramientas.DataBind();
-                    txthnombre.Text = "";
-                    txthdetalle.Text = "";
-                    txthvalor.Text = "";
+                    lbtexth.Text = "la herramienta no puede costar 0";
+                    mpherramienta.Show();
                 }
+                else {
+                    HERRAMIENTA nuevo = new HERRAMIENTA
+                    {
+                        NOMBRE = nombre,
+                        DETALLE = detalle,
+                        VALOR = valor,
+                        FECHA = fecha,
+                        ESTADO = estado,
+
+                    };
+
+                    if (con.agregarherramienta(nuevo))
+                    {
+                        lbtexth.Text = "agregado";
+                        gvherramientas.DataBind();
+                        txthnombre.Text = "";
+                        txthdetalle.Text = "";
+                        txthvalor.Text = "";
+                        mpherramienta.Show();
+                    }
+                }
+                
             }
              
 
@@ -222,7 +253,7 @@ namespace lemoncellar
             Label mmedida = (Label)gvmaterial.Rows[e.RowIndex].FindControl("Label3");
             Label mcantidad = (Label)gvmaterial.Rows[e.RowIndex].FindControl("Label4");
             Label mid = (Label)gvmaterial.Rows[e.RowIndex].FindControl("Label5");
-            lbmaterial.Text = "el siguiente material asignado";
+            lbmaterial.Text = "el siguiente material será asignado asignado";
             txtcmv.Visible = false;
             txtcmn.Visible = true;
             txtcmn.Text = mnombre.Text;
@@ -312,7 +343,6 @@ namespace lemoncellar
                         {
 
                             lbmaterial.Text = "compra agregada";
-                            gvmaterial.DataBind();
                             txtcmn.Visible = false;
                             txtcmn.Text = "";
                             txtcmt.Visible = false;
@@ -324,7 +354,10 @@ namespace lemoncellar
                             txtcmv.Visible = false;
                             txtcmv.Text = "";
                             btnconfirmarmaterial.Visible = false;
+                            gvmaterial.DataSource = con.buscarmaterial(txtbuscarm.Text, txtbuscart.Text);
+                            gvmaterial.DataBind();
                             gvmaterial.Visible = true;
+                            
                             mm1.Show();
                         }
                     }
@@ -396,8 +429,9 @@ namespace lemoncellar
                                 txtcmr.Text = "";
                                 txtcmd.Text = "";
                                 btnconfirmarmaterialp.Visible = false;
-                                gvmaterial.Visible = true;
+                                gvmaterial.DataSource = con.buscarmaterial(txtbuscarm.Text,txtbuscart.Text);
                                 gvmaterial.DataBind();
+                                gvmaterial.Visible = true;
                                 mm1.Show();
                             }
                         }
@@ -422,6 +456,21 @@ namespace lemoncellar
         //consumible
         protected void btnbuscarc_Click(object sender, EventArgs e)
         {
+            txtccn.Text = "";
+            txtccn.Visible = false;
+            txtccd.Text="";
+            txtccv.Text = "";
+            txtccc.Text = "";
+            txtccc2.Text = "";
+            txtccd2.Text = "";
+            txtccd.Visible = false;
+            txtccv.Visible = false;
+            txtccc.Visible = false;
+            txtccc2.Visible = false;
+            txtccd2.Visible = false;
+            btnconfirmarI.Visible = false;
+            btnconfirmarG.Visible = false;
+
             string buscar = "";
             gvconsumible.Visible = true;
             buscar = txtconsumible.Text;
@@ -434,7 +483,7 @@ namespace lemoncellar
                     mc1.Show();
                 }
                 else {
-                    lbconsumible.Text = "nuevo";
+                    lbconsumible.Text = "no se encontraron consumibles, agregue uno nuevo";
                     mc1.Show();
                     txtccn.Visible = true;
                     txtccn.Text = txtconsumible.Text;
@@ -480,7 +529,7 @@ namespace lemoncellar
         }
         protected void gvconsumible_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            lbconsumible.Text = "a ingresar";
+            lbconsumible.Text = "nueva compra";
             mc1.Show();
             Label id = (Label)gvconsumible.Rows[e.NewSelectedIndex].FindControl("Label1");
             Label nombre = (Label)gvconsumible.Rows[e.NewSelectedIndex].FindControl("Label2");
@@ -506,7 +555,7 @@ namespace lemoncellar
         }
         protected void gvconsumible_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            lbconsumible.Text = "b prestar";
+            lbconsumible.Text = "ocupar consumible";
             mc1.Show();
             Label id = (Label)gvconsumible.Rows[e.RowIndex].FindControl("Label1");
             Label nombre = (Label)gvconsumible.Rows[e.RowIndex].FindControl("Label2");
@@ -527,7 +576,7 @@ namespace lemoncellar
 
             btnconfirmarG.Visible = true;
             btnconfirmarI.Visible = false;
-            gvconsumible.DataBind();
+            gvconsumible.Visible = false; ;
         }
         protected void btnguardar_Click(object sender, EventArgs e)
         {
@@ -758,6 +807,11 @@ namespace lemoncellar
         protected void btnbuscarH_Click(object sender, EventArgs e)
         {
             gvherramientas.Visible = true;
+            lbidh.Text = "";
+            lbnombreh.Text = "";
+            lbdetalleh.Text = "";
+            lbvalorh.Text = "";
+            lbfechah.Text = "";
             lbnombreh.Visible = false;
             lbdetalleh.Visible = false;
             btnconfirmarH.Visible = false;
@@ -776,6 +830,7 @@ namespace lemoncellar
                 }
                 else
                 {
+                    gvherramientas.DataBind();
                     gvherramientas.DataSource = cov.buscarherra(buscar);
                     gvherramientas.DataBind();
                     mh1.Show();
@@ -789,6 +844,13 @@ namespace lemoncellar
 
         protected void gvherramientas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            
+            lbidh.Text = "";
+            lbnombreh.Text = "";
+            lbdetalleh.Text = "";
+            lbvalorh.Text = "";
+            lbfechah.Text = "";
+
             Label id = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label1");
             Label nombre = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label2");
             Label valor = (Label)gvherramientas.Rows[e.NewSelectedIndex].FindControl("Label3");
@@ -830,11 +892,12 @@ namespace lemoncellar
                 lbdetalleh.Text = "";
                 lbvalorh.Text = "";
                 lbfechah.Text = "";
-
+                mh1.Show();
                 lbnombreh.Visible = false;
                 lbdetalleh.Visible = false;
                 btnconfirmarH.Visible = false;
                 gvherramientas.Visible = true;
+                gvherramientas.DataSource = cov.buscarherras();
                 gvherramientas.DataBind();
             }
         }
@@ -880,7 +943,7 @@ namespace lemoncellar
             buscar = txtbuscarm.Text;
             buscart = txtbuscart.Text;
             txtcmv.Visible = false;
-            lbmaterial.Text = "agregue un material cn otra medida";
+            lbmaterial.Text = "agregue un material con otra medida";
 
             txtcmn.Visible = true;
             txtcmn.Text = buscar;
@@ -902,6 +965,23 @@ namespace lemoncellar
             gvmaterial.DataSource = null;
             gvmaterial.DataBind();
             mm1.Show();
+        }
+
+        protected void gvherramientas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvherramientas.PageIndex = e.NewPageIndex;
+            gvherramientas.DataSource = cov.buscarherras();
+            gvherramientas.DataBind();
+            mh1.Show();
+            
+        }
+
+        protected void gvconsumible_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvconsumible.PageIndex = e.NewPageIndex;
+            gvconsumible.DataSource = con.buscarconsumibles();
+            gvconsumible.DataBind();
+            mc1.Show();
         }
 
         
